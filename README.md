@@ -61,36 +61,48 @@ This setup is repeated for each creature type—**Iron Ivy**, **Brass Thorn**, a
 The `MechanicalBotanicalFactory` class is where the magic happens. This class knows how to create each type of creature based on an input parameter. It contains a dictionary that maps each creature type to its script file path, allowing it to create instances of the creatures on demand:
 
 ```gdscript
-# MechanicalBotanicalFactory.gd
-extends Node
+# mechanical_botanical_factory.gd
 class_name MechanicalBotanicalFactory
+extends Node
 
 enum CreatureType {
-    CLOCKWORK_ROSE,
-    IRON_IVY,
-    BRASS_THORN,
-    # ...other creatures
+	CLOCKWORK_ROSE,
+	IRON_IVY,
+	COPPER_BLOOM,
+	STEEL_WILLOW,
+	BRASS_THORN,
+	SILVER_LOTUS,
+	GOLDEN_FERN,
+	TITAN_OAK,
+	BRONZE_LILAC,
+	OBSIDIAN_CACTUS
 }
 
-var creature_paths: Dictionary[int, String] = {
-    CreatureType.CLOCKWORK_ROSE: "res://scripts/ClockworkRose.gd",
-    CreatureType.IRON_IVY: "res://scripts/IronIvy.gd",
-    CreatureType.BRASS_THORN: "res://scripts/BrassThorn.gd"
-    # ...other paths
+var creature_paths = {
+	CreatureType.CLOCKWORK_ROSE: "res://scripts/clockwork_rose.gd",
+	CreatureType.IRON_IVY: "res://scripts/iron_ivy.gd",
+	CreatureType.COPPER_BLOOM: "res://scripts/copper_bloom.gd",
+	CreatureType.STEEL_WILLOW: "res://scripts/steel_willow.gd",
+	CreatureType.BRASS_THORN: "res://scripts/brass_thorn.gd",
+	CreatureType.SILVER_LOTUS: "res://scripts/silver_lotus.gd",
+	CreatureType.GOLDEN_FERN: "res://scripts/golden_fern.gd",
+	CreatureType.TITAN_OAK: "res://scripts/titan_oak.gd",
+	CreatureType.BRONZE_LILAC: "res://scripts/bronze_lilac.gd",
+	CreatureType.OBSIDIAN_CACTUS: "res://scripts/obsidian_cactus.gd"
 }
 
 var creature_cache = {}
 
-func create_creature(creature_type: int) -> MechanicalBotanicalCreature:
-    if creature_type in creature_paths:
-        if not creature_cache.has(creature_type):
-            creature_cache[creature_type] = preload(creature_paths[creature_type]) as PackedScene
-        
-        var creature_instance: MechanicalBotanicalCreature = creature_cache[creature_type].instance() as MechanicalBotanicalCreature
-        return creature_instance
-    else:
-        printerr("Error: Unknown creature type: " + str(creature_type))
-        return null
+func create_creature(creature_type: CreatureType) -> MechanicalBotanicalCreature:
+	if creature_type in creature_paths:
+		if not creature_cache.has(creature_type):
+			creature_cache[creature_type] = load(str(creature_paths[creature_type]))
+		
+		var creature_instance = creature_cache[creature_type].new()
+		return creature_instance
+	else:
+		printerr("Error: Unknown creature type: " + str(creature_type))
+		return null
 ```
 
 This factory can now create any creature simply by passing the type code (e.g., `CreatureType.CLOCKWORK_ROSE`).
