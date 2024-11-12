@@ -19,9 +19,9 @@ In our project, each creature—like the *Clockwork Rose*, *Iron Ivy*, or *Brass
 The first step is to define a base class, `MechanicalBotanicalCreature`, which has shared properties like `creature_name`, `health`, `defense`, and more. This base class acts as a template for all the specific creature types:
 
 ```gdscript
-# MechanicalBotanicalCreature.gd
-extends Node2D
+# mechanical_botanical_creature.gd
 class_name MechanicalBotanicalCreature
+extends Sprite2D
 
 var creature_name: String
 var backstory: String
@@ -31,8 +31,15 @@ var attack_power: int
 var special_ability: String
 
 func _ready():
-    print(creature_name + " has been created.")
-    print("Backstory: " + backstory)
+	print(creature_name + " has been created.")
+	print("Backstory: " + backstory)
+	print("Stats -> Health: " + str(health) + ", Defense: " + str(defense) + ", Attack Power: " + str(attack_power))
+	print("Special Ability: " + special_ability)
+
+
+func use_special_ability():
+	print(creature_name + " uses " + special_ability)
+
 ```
 
 #### Step 2: Create Specific Creature Scripts
@@ -44,14 +51,18 @@ Next, we create individual scripts for each creature. Each script inherits from 
 class_name ClockworkRose
 extends MechanicalBotanicalCreature
 
-
-func _ready():
-    creature_name = "Clockwork Rose"
-    backstory = "A delicate creation forged from gears and petals..."
-    health = 60
-    defense = 30
-    attack_power = 15
-    special_ability = "Petal Burst: Releases a shower of sharp petals."
+func _init():
+	creature_name = "Clockwork Rose"
+	backstory = "A delicate creation forged from gears and petals, the Clockwork Rose was built to symbolize the unity of nature and machinery. Its soft whirring soothes those who hear it."
+	health = 60
+	defense = 30
+	attack_power = 15
+	special_ability = "Petal Burst: Releases a shower of sharp petals to damage nearby foes."
+	texture = load("res://assets/portraits/clockwork rose.webp")
+	
+func use_special_ability():
+	print(name + " releases a burst of sharp petals, dealing damage to all nearby enemies.")
+	# Example damage logic for nearby foes
 ```
 
 This setup is repeated for each creature type—**Iron Ivy**, **Brass Thorn**, and others.
