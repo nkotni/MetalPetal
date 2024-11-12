@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://blpothxasw658"]
+
+[ext_resource type="Texture2D" uid="uid://b3sny2yicafck" path="res://assets/sprites/BronzeLilacSprites.webp" id="1_6t00k"]
+
+[resource]
+atlas = ExtResource("1_6t00k")
+region = Rect2(324.721, 759.043, 190.04, 257.682)

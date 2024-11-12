@@ -1,9 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://q6h3mkjqf6pu"]
+[gd_scene load_steps=7 format=3 uid="uid://q6h3mkjqf6pu"]
 
 [ext_resource type="PackedScene" uid="uid://bqpv4bwdoj0bt" path="res://scenes/metal_petal_base.tscn" id="1_jy7pp"]
+[ext_resource type="Material" uid="uid://crr6kapqvbej5" path="res://assets/outline_material.tres" id="2_giqjw"]
 [ext_resource type="Texture2D" uid="uid://c0f3ht7o7ken8" path="res://assets/sprites/overhead brass thorn.png" id="2_pctmp"]
+[ext_resource type="Script" path="res://scripts/brass_thorn.gd" id="2_qxq7r"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="3_gfmsr"]
 
-[node name="BrassThorn" instance=ExtResource("1_jy7pp")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ltimy"]
+shader = ExtResource("3_gfmsr")
+shader_parameter/color = Color(0.975484, 0.000872899, 0.989333, 1)
+shader_parameter/thickness = 2.0
+shader_parameter/tolerance = 0.846
+shader_parameter/diagonals = true
+shader_parameter/rounded = true
+
+[node name="BrassThorn" groups=["metal_petal"] instance=ExtResource("1_jy7pp")]
+material = ExtResource("2_giqjw")
+script = ExtResource("2_qxq7r")
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_ltimy")
 texture = ExtResource("2_pctmp")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://nk6et1g2t7ja"]
+
+[ext_resource type="PackedScene" uid="uid://bqpv4bwdoj0bt" path="res://scenes/metal_petal_base.tscn" id="1_6vfb3"]
+[ext_resource type="Script" path="res://scripts/bronze_lilac.gd" id="2_5047e"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="2_ph25t"]
+[ext_resource type="Texture2D" uid="uid://blpothxasw658" path="res://assets/sprites/bronze_lilac.tres" id="3_jx6fp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mk236"]
+resource_local_to_scene = true
+shader = ExtResource("2_ph25t")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/thickness = 1.0
+shader_parameter/tolerance = 0.0
+shader_parameter/diagonals = true
+shader_parameter/rounded = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h5ec1"]
+resource_local_to_scene = true
+shader = ExtResource("2_ph25t")
+shader_parameter/color = Color(0.52549, 0.490196, 1, 1)
+shader_parameter/thickness = 2.247
+shader_parameter/tolerance = 0.0
+shader_parameter/diagonals = true
+shader_parameter/rounded = true
+
+[node name="BronzeLilac" instance=ExtResource("1_6vfb3")]
+material = SubResource("ShaderMaterial_mk236")
+script = ExtResource("2_5047e")
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_h5ec1")
+position = Vector2(-12, 2)
+texture = ExtResource("3_jx6fp")

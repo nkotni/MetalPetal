@@ -1,13 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqpv4bwdoj0bt"]
+[gd_scene load_steps=8 format=3 uid="uid://bqpv4bwdoj0bt"]
+
+[ext_resource type="Script" path="res://scripts/mechanical_botanical_creature.gd" id="1_is3su"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="2_cytps"]
+[ext_resource type="Script" path="res://scripts/debug_label.gd" id="3_jt36n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6smi3"]
+resource_local_to_scene = true
+shader = ExtResource("2_cytps")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/thickness = 1.0
+shader_parameter/tolerance = 0.0
+shader_parameter/diagonals = true
+shader_parameter/rounded = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ae0ln"]
+shader = ExtResource("2_cytps")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/thickness = 0.0
+shader_parameter/tolerance = 0.0
+shader_parameter/diagonals = true
+shader_parameter/rounded = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_heakn"]
 radius = 93.0
 height = 224.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b70sk"]
+radius = 94.0
+height = 218.0
+
 [node name="MetalPetalBase" type="CharacterBody2D"]
+material = SubResource("ShaderMaterial_6smi3")
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_is3su")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ae0ln")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-15, 0)
 shape = SubResource("CapsuleShape2D_heakn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-14, 0)
+shape = SubResource("CapsuleShape2D_b70sk")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_jt36n")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

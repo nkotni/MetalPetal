@@ -2,6 +2,8 @@ class_name CopperBloom
 extends MechanicalBotanicalCreature
 
 
+
+
 func _init():
 	creature_name = "Copper Bloom"
 	backstory = "Copper Bloom is a flower-like automaton with rotating petals that absorb sunlight and convert it into energy. Created by an ancient civilization, it was meant to be a perpetual energy source."

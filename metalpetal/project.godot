@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1024
 window/size/viewport_height=1024
 
+[global_group]
+
+metal_petal="The mechanical botanical creatures."
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

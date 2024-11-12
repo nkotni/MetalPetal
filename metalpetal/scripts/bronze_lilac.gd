@@ -1,6 +1,11 @@
 class_name BronzeLilac
 extends MechanicalBotanicalCreature
 
+func _ready():
+	super._ready()
+
+func _process(_delta):
+	super._process(_delta)
 
 func _init():
 	creature_name = "Bronze Lilac"

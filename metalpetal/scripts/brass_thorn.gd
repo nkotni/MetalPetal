@@ -2,6 +2,12 @@ class_name BrassThorn
 extends MechanicalBotanicalCreature
 
 
+func _ready():
+	super._ready()
+
+func _process(delta) -> void:
+	super._process(delta)
+
 func _init():
 	creature_name = "Brass Thorn"
 	backstory = "This small, spiny bush was developed as a defense mechanism, its thorns containing retractable needles filled with an oil-based tranquilizer. It was used to protect rare plants in automated gardens."

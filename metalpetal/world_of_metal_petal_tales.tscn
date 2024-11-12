@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2p1dmd2xvwy6"]
+[gd_scene load_steps=6 format=3 uid="uid://c2p1dmd2xvwy6"]
 
+[ext_resource type="Script" path="res://scripts/world_of_metal_petal_tales.gd" id="1_3ji1b"]
 [ext_resource type="Script" path="res://scripts/factory_order.gd" id="1_aq5v8"]
+[ext_resource type="PackedScene" uid="uid://q6h3mkjqf6pu" path="res://scenes/brass_thorn.tscn" id="3_ehabv"]
 [ext_resource type="Texture2D" uid="uid://lc8uc6ndroq4" path="res://assets/background/PalaceGardens.webp" id="3_rpel8"]
+[ext_resource type="PackedScene" uid="uid://blqcv4y86k4pt" path="res://scenes/compendium.tscn" id="4_kecvb"]
 
-[node name="World of MetalPetal Tales" type="Node2D"]
+[node name="World of MetalPetal Tales" type="Node2D" groups=["metal_petal"]]
+script = ExtResource("1_3ji1b")
 
 [node name="FactoryOrder" type="Node" parent="." node_paths=PackedStringArray("anchor")]
 script = ExtResource("1_aq5v8")
@@ -13,5 +17,16 @@ anchor = NodePath("../anchor")
 position = Vector2(512, 512)
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(519, 519)
+position = Vector2(512, 512)
 texture = ExtResource("3_rpel8")
+
+[node name="BrassThorn2" parent="." instance=ExtResource("3_ehabv")]
+material = null
+position = Vector2(834, 773)
+
+[node name="BrassThorn" parent="." instance=ExtResource("3_ehabv")]
+material = null
+position = Vector2(357, 719)
+
+[node name="Compendium" parent="." node_paths=PackedStringArray("world") instance=ExtResource("4_kecvb")]
+world = NodePath("..")
