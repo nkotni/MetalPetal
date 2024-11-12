@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://q6h3mkjqf6pu"]
+
+[ext_resource type="PackedScene" uid="uid://bqpv4bwdoj0bt" path="res://scenes/metal_petal_base.tscn" id="1_jy7pp"]
+[ext_resource type="Texture2D" uid="uid://c0f3ht7o7ken8" path="res://assets/sprites/overhead brass thorn.png" id="2_pctmp"]
+
+[node name="BrassThorn" instance=ExtResource("1_jy7pp")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_pctmp")

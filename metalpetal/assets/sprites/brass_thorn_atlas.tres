@@ -1,0 +1,6 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://suiccfq6i7it"]
+
+[ext_resource type="Texture2D" uid="uid://c0f3ht7o7ken8" path="res://assets/sprites/overhead brass thorn.png" id="1_c4k74"]
+
+[resource]
+atlas = ExtResource("1_c4k74")

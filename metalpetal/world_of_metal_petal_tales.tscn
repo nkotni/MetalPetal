@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2p1dmd2xvwy6"]
+
+[ext_resource type="Script" path="res://scripts/factory_order.gd" id="1_aq5v8"]
+[ext_resource type="Texture2D" uid="uid://lc8uc6ndroq4" path="res://assets/background/PalaceGardens.webp" id="3_rpel8"]
+
+[node name="World of MetalPetal Tales" type="Node2D"]
+
+[node name="FactoryOrder" type="Node" parent="." node_paths=PackedStringArray("anchor")]
+script = ExtResource("1_aq5v8")
+anchor = NodePath("../anchor")
+
+[node name="anchor" type="Node2D" parent="."]
+position = Vector2(512, 512)
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(519, 519)
+texture = ExtResource("3_rpel8")
