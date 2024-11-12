@@ -1,18 +1,18 @@
 # MetalPetal
-Let’s walk through how the **Factory Pattern** works in the context of our Godot project with **mechanical botanical creatures**. Think of it as an organized, structured way to manage the creation of different types of creatures without cluttering up your main code. Instead of directly creating each creature with specific details in the main script, the Factory Pattern lets us handle object creation in a single, centralized class. This way, the code is neater, easier to update, and more flexible for future additions.
+This is a project to serve as a game-based example of the Factory Pattern. It works in the context of the MetalPetal Godot project where mechanical botanical creatures thrive. Think of it as an organized, structured way to manage the creation of different types of creatures without cluttering up your main code. Instead of directly creating each creature with specific details in the main script, the Factory Pattern lets us handle object creation in a single, centralized class. This way, the code is neater, easier to update, and more flexible for future additions. Using the Factory Pattern in this project keeps our game logic flexible, organized, and easy to expand—a useful approach for any game that requires managing multiple types of objects.
 
 ### Understanding the Factory Pattern
 
-The Factory Pattern is a **creational design pattern**. It’s essentially a strategy to delegate or “outsource” the process of creating objects to a factory class. Instead of hardcoding every creature type throughout the project, we create them through this one factory class. 
+The Factory Pattern is a creational design pattern. It’s essentially a strategy to delegate or “outsource” the process of creating objects to a factory class. Instead of hardcoding every creature type throughout the project, we create them through this one factory class. 
 
 By using a factory, we achieve a few key things:
 1. **Encapsulation**: All the creation logic is grouped in one place (the factory), making it easier to manage and update.
 2. **Flexibility**: If we want to add a new type of creature, we only need to adjust the factory slightly. There’s no need to update the main game logic, which makes the code much easier to extend.
-3. **Reduced Dependence on Specifics**: The factory creates the creatures based on input parameters (e.g., a type code), so the main game code doesn’t need to know the details of each creature. This makes our code more modular and less prone to errors.
+3. **Reduced Dependence**: The factory creates the creatures based on input parameters (e.g., a type code), so the main game code doesn’t need to know the details of each creature. This makes our code more modular and less prone to errors.
 
 ### Applying the Factory Pattern to Our Mechanical Botanical Creatures
 
-In our project, each creature—like the **Clockwork Rose**, **Iron Ivy**, or **Brass Thorn**—has unique properties and abilities. To avoid repetitive and cluttered code, we use a factory to handle creating these creatures. Here’s how we set it up:
+In our project, each creature—like the *Clockwork Rose*, *Iron Ivy*, or *Brass Thorn*—has unique properties and abilities. To avoid repetitive and cluttered code, we use a factory to handle creating these creatures. Here’s how we set it up:
 
 #### Step 1: Create a Base Class for Creatures
 
@@ -37,12 +37,13 @@ func _ready():
 
 #### Step 2: Create Specific Creature Scripts
 
-Next, we create individual scripts for each creature. Each script inherits from `MechanicalBotanicalCreature`, allowing it to define its own properties and special abilities. Here’s an example for **Clockwork Rose**:
+Next, we create individual scripts for each creature. Each script inherits from `MechanicalBotanicalCreature`, allowing it to define its own properties and special abilities. Here’s an example for *Clockwork Rose*:
 
 ```gdscript
-# ClockworkRose.gd
-extends "res://MechanicalBotanicalCreature.gd"
+# clockwork_rose.gd
 class_name ClockworkRose
+extends MechanicalBotanicalCreature
+
 
 func _ready():
     creature_name = "Clockwork Rose"
@@ -51,7 +52,6 @@ func _ready():
     defense = 30
     attack_power = 15
     special_ability = "Petal Burst: Releases a shower of sharp petals."
-    .ready()
 ```
 
 This setup is repeated for each creature type—**Iron Ivy**, **Brass Thorn**, and others.
@@ -73,13 +73,13 @@ enum CreatureType {
 }
 
 var creature_paths: Dictionary[int, String] = {
-    CreatureType.CLOCKWORK_ROSE: "res://ClockworkRose.gd",
-    CreatureType.IRON_IVY: "res://IronIvy.gd",
-    CreatureType.BRASS_THORN: "res://BrassThorn.gd"
+    CreatureType.CLOCKWORK_ROSE: "res://scripts/ClockworkRose.gd",
+    CreatureType.IRON_IVY: "res://scripts/IronIvy.gd",
+    CreatureType.BRASS_THORN: "res://scripts/BrassThorn.gd"
     # ...other paths
 }
 
-var creature_cache: Dictionary[int, PackedScene] = {}
+var creature_cache = {}
 
 func create_creature(creature_type: int) -> MechanicalBotanicalCreature:
     if creature_type in creature_paths:
@@ -93,11 +93,11 @@ func create_creature(creature_type: int) -> MechanicalBotanicalCreature:
         return null
 ```
 
-This factory can now create any type of creature simply by passing the type code (e.g., `CreatureType.CLOCKWORK_ROSE`).
+This factory can now create any creature simply by passing the type code (e.g., `CreatureType.CLOCKWORK_ROSE`).
 
 #### Step 4: Use the Factory in the Main Game Code
 
-In the main game code, we now use the factory to generate creatures. Instead of hardcoding the creation of each creature, we simply call `create_creature` on the factory and let it do the work:
+In the main game code, we now use the factory to generate creatures. Instead of hardcoding the creation of each creature, we call `create_creature` on the factory and let it do the work:
 
 ```gdscript
 # Main.gd
@@ -121,10 +121,5 @@ func _ready():
 
 With this setup, adding a new creature type is simple: just create a new creature script, add it to the `creature_paths` dictionary in the factory, and the main game logic remains untouched.
 
-### Benefits of the Factory Pattern in Our Project
 
-1. **Encapsulation**: By keeping object creation in the factory, our main game code is cleaner and more focused on game logic rather than object details.
-2. **Scalability**: Adding new creatures is easy. We only need to add a new script and update the factory, making it scalable and easier to maintain as the project grows.
-3. **Reduced Coupling**: The main game code doesn’t need to know about individual creature types, making the code more modular and reducing dependencies.
 
-Using the Factory Pattern in this project keeps our game logic flexible, organized, and easy to expand—a useful approach for any game that requires managing multiple types of objects!
