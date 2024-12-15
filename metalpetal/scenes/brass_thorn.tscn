@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://q6h3mkjqf6pu"]
 
-[ext_resource type="PackedScene" uid="uid://bqpv4bwdoj0bt" path="res://scenes/metal_petal_base.tscn" id="1_jy7pp"]
+[ext_resource type="PackedScene" uid="uid://bqpv4bwdoj0bt" path="res://scenes/iron_ivy.tscn" id="1_jy7pp"]
 [ext_resource type="Material" uid="uid://crr6kapqvbej5" path="res://assets/outline_material.tres" id="2_giqjw"]
 [ext_resource type="Texture2D" uid="uid://c0f3ht7o7ken8" path="res://assets/sprites/overhead brass thorn.png" id="2_pctmp"]
 [ext_resource type="Script" path="res://scripts/brass_thorn.gd" id="2_qxq7r"]
@@ -14,10 +14,30 @@ shader_parameter/tolerance = 0.846
 shader_parameter/diagonals = true
 shader_parameter/rounded = true
 
-[node name="BrassThorn" groups=["metal_petal"] instance=ExtResource("1_jy7pp")]
+[node name="BrassThorn" instance=ExtResource("1_jy7pp")]
 material = ExtResource("2_giqjw")
 script = ExtResource("2_qxq7r")
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_ltimy")
+position = Vector2(-1.90735e-06, -1.90735e-06)
+scale = Vector2(0.500203, 0.484623)
 texture = ExtResource("2_pctmp")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-4, 0)
+scale = Vector2(0.657997, 0.76491)
+
+[node name="Area2D" parent="." index="2"]
+position = Vector2(4, 0)
+scale = Vector2(0.680797, 0.510756)
+
+[node name="Label" parent="." index="3"]
+offset_left = -58.0
+offset_top = 48.0
+offset_right = 87.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0.875456, 0.875457, 0.875456, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 20
+text = "Brass Thorn"

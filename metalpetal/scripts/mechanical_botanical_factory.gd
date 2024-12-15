@@ -15,16 +15,16 @@ enum CreatureType {
 }
 
 var creature_paths = {
-	CreatureType.CLOCKWORK_ROSE: "res://scripts/clockwork_rose.gd",
-	CreatureType.IRON_IVY: "res://scripts/iron_ivygd",
-	CreatureType.COPPER_BLOOM: "res://scripts/coppe.r_bloom.gd",
-	CreatureType.STEEL_WILLOW: "res://scripts/steel_willow.gd",
+	CreatureType.CLOCKWORK_ROSE: "res://scenes/clockwork_rose.gd",
+	CreatureType.IRON_IVY: "res://scenes/iron_ivy.tscn",
+	CreatureType.COPPER_BLOOM: "res://scenes/coppe.r_bloom.tscn",
+	CreatureType.STEEL_WILLOW: "res://scenes/steel_willow.tscn",
 	CreatureType.BRASS_THORN: "res://scenes/brass_thorn.tscn",
-	CreatureType.SILVER_LOTUS: "res://scripts/silver_lotus.gd",
-	CreatureType.GOLDEN_FERN: "res://scripts/golden_fern.gd",
-	CreatureType.TITAN_OAK: "res://scripts/titan_oak.gd",
+	CreatureType.SILVER_LOTUS: "res://scenes/silver_lotus.tscn",
+	CreatureType.GOLDEN_FERN: "res://scenes/golden_fern.tscn",
+	CreatureType.TITAN_OAK: "res://scenes/titan_oak.tscn",
 	CreatureType.BRONZE_LILAC: "res://scenes/bronze_lilac.tscn",
-	CreatureType.OBSIDIAN_CACTUS: "res://scripts/obsidian_cactus.gd"
+	CreatureType.OBSIDIAN_CACTUS: "res://scenes/obsidian_cactus.tscn"
 }
 
 var creature_cache = {}

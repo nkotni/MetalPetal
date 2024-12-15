@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvussn5hk2dm5"]
+
+[ext_resource type="PackedScene" uid="uid://c2k1uf1s8kb18" path="res://scenes/metal_petal_base.tscn" id="1_jybhy"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="2_2io1h"]
+[ext_resource type="Script" path="res://scripts/obsidian_cactus.gd" id="3_7x7qf"]
+[ext_resource type="Texture2D" uid="uid://b3mi6htdxnr6x" path="res://assets/portraits/obsidian cactus.webp" id="4_e6w15"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d6xfl"]
+resource_local_to_scene = true
+shader = ExtResource("2_2io1h")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/thickness = 1.0
+shader_parameter/tolerance = 0.0
+shader_parameter/diagonals = true
+shader_parameter/rounded = true
+
+[node name="ObsidianCactus" groups=["metal_petal"] instance=ExtResource("1_jybhy")]
+material = SubResource("ShaderMaterial_d6xfl")
+script = ExtResource("3_7x7qf")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_e6w15")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(10, -2)
+scale = Vector2(0.636739, 0.736922)
+
+[node name="Area2D" parent="." index="2"]
+position = Vector2(22, -4)
+scale = Vector2(0.919996, 1.32)
+
+[node name="Label" parent="." index="3"]
+offset_left = -148.0
+offset_top = 146.0
+offset_right = 202.0
+offset_bottom = 209.0
+theme_override_font_sizes/font_size = 40
+text = "Obsidian Cactus"

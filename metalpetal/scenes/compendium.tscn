@@ -49,6 +49,22 @@ offset_bottom = 1884.0
 scale = Vector2(0.15, 0.15)
 texture_normal = ExtResource("4_ddaqk")
 
+[node name="CreatureLabel" type="Label" parent="."]
+offset_left = 361.0
+offset_top = 84.0
+offset_right = 687.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.151276, 0.151276, 0.151276, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 50
+
 [connection signal="pressed" from="LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="RightButton" to="." method="_on_right_button_pressed"]
 [connection signal="pressed" from="CreateButton" to="." method="_on_create_button_pressed"]

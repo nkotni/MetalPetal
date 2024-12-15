@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://nk6et1g2t7ja"]
 
-[ext_resource type="PackedScene" uid="uid://bqpv4bwdoj0bt" path="res://scenes/metal_petal_base.tscn" id="1_6vfb3"]
+[ext_resource type="PackedScene" uid="uid://bqpv4bwdoj0bt" path="res://scenes/iron_ivy.tscn" id="1_6vfb3"]
 [ext_resource type="Script" path="res://scripts/bronze_lilac.gd" id="2_5047e"]
 [ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="2_ph25t"]
 [ext_resource type="Texture2D" uid="uid://blpothxasw658" path="res://assets/sprites/bronze_lilac.tres" id="3_jx6fp"]
@@ -29,5 +29,22 @@ script = ExtResource("2_5047e")
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_h5ec1")
-position = Vector2(-12, 2)
+position = Vector2(2, 1.19209e-07)
 texture = ExtResource("3_jx6fp")
+
+[node name="CollisionShape2D" parent="." index="1"]
+scale = Vector2(0.603398, 0.826103)
+
+[node name="Area2D" parent="." index="2"]
+position = Vector2(8, 1.42109e-14)
+scale = Vector2(0.356254, 0.417444)
+
+[node name="Label" parent="." index="3"]
+offset_left = -36.0
+offset_top = 42.0
+offset_right = 81.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.931897, 0.931897, 0.931897, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 15
+text = "Bronze Lilac"

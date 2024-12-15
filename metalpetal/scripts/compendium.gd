@@ -22,7 +22,6 @@ var _current_page_type:MechanicalBotanicalFactory.CreatureType
 
 
 
-
 func _ready():
 	factory = MechanicalBotanicalFactory.new()
 	_current_page_type = MechanicalBotanicalFactory.CreatureType.values().pick_random()
@@ -31,6 +30,7 @@ func _ready():
 
 func _load_page() -> void:
 	$Page.texture = load(creature_pages[_current_page_type])
+	$CreatureLabel.text = (MechanicalBotanicalFactory.CreatureType).keys()[_current_page_type]
 
 
 func _on_left_button_pressed():

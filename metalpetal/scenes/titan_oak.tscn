@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2k1uf1s8kb18"]
+[gd_scene load_steps=9 format=3 uid="uid://inxxfcss7hlc"]
 
-[ext_resource type="Script" path="res://scripts/mechanical_botanical_creature.gd" id="1_is3su"]
-[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="2_cytps"]
-[ext_resource type="Script" path="res://scripts/debug_label.gd" id="3_jt36n"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="1_a1pwr"]
+[ext_resource type="Script" path="res://scripts/titan_oak.gd" id="2_w4wu4"]
+[ext_resource type="Texture2D" uid="uid://pwubxku1vyfp" path="res://assets/portraits/titan oak.webp" id="3_a21ea"]
+[ext_resource type="Script" path="res://scripts/debug_label.gd" id="3_w3jry"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6smi3"]
 resource_local_to_scene = true
-shader = ExtResource("2_cytps")
+shader = ExtResource("1_a1pwr")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/thickness = 1.0
 shader_parameter/tolerance = 0.0
@@ -14,7 +15,7 @@ shader_parameter/diagonals = true
 shader_parameter/rounded = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ae0ln"]
-shader = ExtResource("2_cytps")
+shader = ExtResource("1_a1pwr")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/thickness = 0.0
 shader_parameter/tolerance = 0.0
@@ -29,38 +30,45 @@ height = 224.0
 radius = 94.0
 height = 218.0
 
-[node name="MetalPetalBase" type="CharacterBody2D"]
+[node name="TitanOak" type="CharacterBody2D" groups=["metal_petal"]]
 material = SubResource("ShaderMaterial_6smi3")
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_is3su")
+script = ExtResource("2_w4wu4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ae0ln")
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_a21ea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-15, 0)
+position = Vector2(6, 0)
+scale = Vector2(1.00665, 0.899078)
 shape = SubResource("CapsuleShape2D_heakn")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(24, -2)
+scale = Vector2(1.56, 1.56)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-14, 0)
 shape = SubResource("CapsuleShape2D_b70sk")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 4.0
-offset_right = 44.0
-offset_bottom = 63.0
+offset_left = -102.0
+offset_top = 172.0
+offset_right = 107.0
+offset_bottom = 235.0
 theme_override_colors/font_color = Color(0.905769, 0.905769, 0.905769, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 45
+text = "Titan Oak"
 
 [node name="DebugLabel" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0.892756, 0.892756, 0.892756, 1)
 theme_override_constants/outline_size = 5
-script = ExtResource("3_jt36n")
+script = ExtResource("3_w3jry")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2k1uf1s8kb18"]
+[gd_scene load_steps=9 format=3 uid="uid://b7e3wa16fk1ky"]
 
-[ext_resource type="Script" path="res://scripts/mechanical_botanical_creature.gd" id="1_is3su"]
-[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="2_cytps"]
-[ext_resource type="Script" path="res://scripts/debug_label.gd" id="3_jt36n"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="1_5j36c"]
+[ext_resource type="Script" path="res://scripts/silver_lotus.gd" id="2_4i8hp"]
+[ext_resource type="Texture2D" uid="uid://cegsrq0gdtamm" path="res://assets/portraits/silver lotus.webp" id="3_4d38c"]
+[ext_resource type="Script" path="res://scripts/debug_label.gd" id="3_cpphb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6smi3"]
 resource_local_to_scene = true
-shader = ExtResource("2_cytps")
+shader = ExtResource("1_5j36c")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/thickness = 1.0
 shader_parameter/tolerance = 0.0
@@ -14,7 +15,7 @@ shader_parameter/diagonals = true
 shader_parameter/rounded = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ae0ln"]
-shader = ExtResource("2_cytps")
+shader = ExtResource("1_5j36c")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/thickness = 0.0
 shader_parameter/tolerance = 0.0
@@ -22,45 +23,52 @@ shader_parameter/diagonals = true
 shader_parameter/rounded = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_heakn"]
-radius = 93.0
-height = 224.0
+radius = 136.0
+height = 272.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b70sk"]
 radius = 94.0
 height = 218.0
 
-[node name="MetalPetalBase" type="CharacterBody2D"]
+[node name="SilverLotus" type="CharacterBody2D" groups=["metal_petal"]]
 material = SubResource("ShaderMaterial_6smi3")
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_is3su")
+script = ExtResource("2_4i8hp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ae0ln")
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_4d38c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-15, 0)
+position = Vector2(8, 2)
+scale = Vector2(0.737532, 0.60561)
 shape = SubResource("CapsuleShape2D_heakn")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(30, 4)
+scale = Vector2(1.44307, 1.18798)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-14, 0)
 shape = SubResource("CapsuleShape2D_b70sk")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 4.0
-offset_right = 44.0
-offset_bottom = 63.0
-theme_override_colors/font_color = Color(0.905769, 0.905769, 0.905769, 1)
+offset_left = -110.0
+offset_top = 174.0
+offset_right = 141.0
+offset_bottom = 237.0
+theme_override_colors/font_color = Color(0.929715, 0.929715, 0.929715, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 45
+text = "Silver Lotus"
 
 [node name="DebugLabel" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0.892756, 0.892756, 0.892756, 1)
 theme_override_constants/outline_size = 5
-script = ExtResource("3_jt36n")
+script = ExtResource("3_cpphb")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
